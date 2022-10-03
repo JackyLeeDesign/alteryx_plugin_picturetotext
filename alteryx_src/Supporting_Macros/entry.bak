@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.1">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Tab.Tab">
+        <Position x="0" y="0" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="39">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
+        <Position x="162" y="150" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name>url</Name>
+          <DefaultAnnotationText>url</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="40">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="174" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="1" />
+          <Fields>
+            <Field name="web url" />
+          </Fields>
+          <Data>
+            <r>
+              <c>123</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="web url" source="TextInput:" type="Byte" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="41">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
+        <Position x="174" y="246" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Update Value</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="46">
+      <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
+        <Position x="270" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <URLField>web url</URLField>
+          <OutputMode>String</OutputMode>
+          <CodePage>65001</CodePage>
+          <EncodeURLs value="True" />
+          <Headers>
+            <NameValues />
+            <Fields orderChanged="False">
+              <Field name="web url" selected="False" />
+              <Field name="*Unknown" selected="False" />
+            </Fields>
+          </Headers>
+          <Payload>
+            <HTTPAction>GET</HTTPAction>
+            <QueryStringBodyMode>Compose</QueryStringBodyMode>
+            <ComposeNameValues />
+            <ComposeFields orderChanged="False">
+              <Field name="web url" selected="False" />
+              <Field name="*Unknown" selected="False" />
+            </ComposeFields>
+          </Payload>
+          <numConnections>2</numConnections>
+          <Timeout>600</Timeout>
+          <EnableRPM value="False" />
+          <Password />
+          <UserName />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="web url" source="TextInput:" type="Byte" />
+            <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
+            <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
+    </Node>
+    <Node ToolID="49">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+        <Position x="462" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Name>Output</Name>
+          <Abbrev />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Output</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
+    </Node>
+    <Node ToolID="50">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
+        <Position x="366" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Field>DownloadData</Field>
+          <RegExExpression value=" " />
+          <CaseInsensitve value="True" />
+          <Method>Match</Method>
+          <Replace expression="">
+            <CopyUnmatched value="True" />
+          </Replace>
+          <ParseSimple>
+            <SplitToRows value="False" />
+            <RootName>DownloadData</RootName>
+            <NumFields value="3" />
+            <ErrorHandling>Warn</ErrorHandling>
+          </ParseSimple>
+          <ParseComplex>
+            <Field field="No Marked Groups Found" type="No Marked Groups Found" size="No Marked Groups Found" />
+          </ParseComplex>
+          <Match>
+            <Field>DownloadData_Matched</Field>
+            <ErrorUnmatched value="False" />
+          </Match>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="web url" source="TextInput:" type="Byte" />
+            <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
+            <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+            <Field name="DownloadData_Matched" type="Bool" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
+    </Node>
+    <Node ToolID="53">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
+        <Position x="366" y="150" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Text Box (53)</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="54">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
+        <Position x="378" y="234" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Update Value</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection name="#1">
+      <Origin ToolID="39" Connection="Question" />
+      <Destination ToolID="41" Connection="Question" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="40" Connection="Output" />
+      <Destination ToolID="46" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="41" Connection="Action" />
+      <Destination ToolID="40" Connection="Action" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="46" Connection="Output" />
+      <Destination ToolID="50" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="54" Connection="Action" />
+      <Destination ToolID="50" Connection="Action" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="50" Connection="Output" />
+      <Destination ToolID="49" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="53" Connection="Question" />
+      <Destination ToolID="54" Connection="Question" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <Constants>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>url</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Output (49)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Text Box (53)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+    </Constants>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>entry</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="c009758b-b23e-44f4-aca0-b5fefbc4ebd9" />
+      <Telemetry>
+        <PreviousWorkflowId value="8d2ee046-b0f0-448a-af6c-f99f2ccf75c2" />
+        <OriginWorkflowId value="8d2ee046-b0f0-448a-af6c-f99f2ccf75c2" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="False" />
+    </Events>
+    <RuntimeProperties>
+      <Actions>
+        <NoCondition>
+          <Type>NoCondition</Type>
+          <Description>(Always Run)</Description>
+          <True>
+            <Action>
+              <Type>Dynamic</Type>
+              <Description />
+              <ToolId value="41" />
+              <Expression>{{INPUT}}</Expression>
+              <Destination>40/Data/r[1]/c[1]</Destination>
+              <Mapping>Update Cell</Mapping>
+              <Mode>Expression</Mode>
+              <DynamicConfiguration>row	1
+column	1</DynamicConfiguration>
+              <DefaultConfiguration value="True" />
+            </Action>
+            <Action>
+              <Type>UpdateValue</Type>
+              <Description />
+              <ToolId value="54" />
+              <Mode>Simple</Mode>
+              <Variable />
+              <Replace value="False" />
+              <Destination>50/RegExExpression/@value</Destination>
+            </Action>
+          </True>
+        </NoCondition>
+      </Actions>
+      <Questions>
+        <Question>
+          <Type>Tab</Type>
+          <Description>Questions</Description>
+          <Name>Tab (1)</Name>
+          <ToolId value="1" />
+          <Questions>
+            <Question>
+              <Type>TextBox</Type>
+              <Description>輸入欲獲取資料網址:</Description>
+              <Name>url</Name>
+              <ToolId value="39" />
+              <Default />
+              <Password value="False" />
+              <Multiline value="False" />
+              <Hidden value="False" />
+            </Question>
+            <Question>
+              <Type>MacroOutput</Type>
+              <Description />
+              <Name>Macro Output (49)</Name>
+              <ToolId value="49" />
+            </Question>
+            <Question>
+              <Type>TextBox</Type>
+              <Description>輸入正規化規則(擷取指定資料時才需輸入):</Description>
+              <Name>Text Box (53)</Name>
+              <ToolId value="53" />
+              <Default />
+              <Password value="False" />
+              <Multiline value="False" />
+              <Hidden value="False" />
+            </Question>
+          </Questions>
+        </Question>
+      </Questions>
+      <ModuleType>Macro</ModuleType>
+      <MacroCustomHelp value="False" />
+      <MacroDynamicOutputFields value="True" />
+      <MacroImage>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</MacroImage>
+      <MacroInputs />
+      <MacroOutputs />
+      <Wiz_CustomHelp value="False" />
+      <Wiz_CustomGraphic value="False" />
+      <Wiz_ShowOutput value="True" />
+      <Wiz_OpenOutputTools>
+        <Tool ToolId="49" Selected="True" />
+      </Wiz_OpenOutputTools>
+      <Wiz_OutputMessage />
+      <Wiz_NoOutputFilesMessage />
+      <Wiz_ChainRunWizard />
+    </RuntimeProperties>
+  </Properties>
+</AlteryxDocument>
