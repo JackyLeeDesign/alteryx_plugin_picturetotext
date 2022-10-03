@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AlteryxJavaScriptPlugin>
+  <Properties>
+    <MetaInfo>
+      <Name>OCR圖像辨識</Name>
+      <Description>將指定的圖片檔案進行OCR辨識轉成文字。</Description>
+      <ToolVersion>1.0.0</ToolVersion>
+      <CategoryName>PwC DEV Tools Test</CategoryName>
+      <Author>Assurance Innovation and Transformation</Author>
+      <Icon>PicToText/icon.png</Icon>
+    </MetaInfo>
+  </Properties>
+</AlteryxJavaScriptPlugin>
